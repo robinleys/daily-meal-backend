@@ -22,7 +22,7 @@ public class IngredientController {
         return ingredientDAO.findAll();
     }
 
-    @GetMapping("/{id")
+    @GetMapping("/{id}")
     public Ingredient getIngredientById(@RequestParam int id) {
         return ingredientDAO.findById(id);
     }

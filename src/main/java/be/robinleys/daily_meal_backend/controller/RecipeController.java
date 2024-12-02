@@ -23,7 +23,7 @@ public class RecipeController {
         return recipeDAO.findAll();
     }
 
-    @GetMapping("/{id")
+    @GetMapping("/{id}")
     public Recipe getRecipeById(@RequestParam int id) {
         return recipeDAO.findById(id);
     }
