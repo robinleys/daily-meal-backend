@@ -33,8 +33,8 @@ public class RecipeDAO {
         jdbcTemplate.update(sql, recipe.getName(), recipe.getId());
     }
 
-    public void delete(Recipe recipe) {
+    public void delete(int id) {
         var sql = "DELETE FROM recipes WHERE id = ?";
-        jdbcTemplate.update(sql, recipe.getId());
+        jdbcTemplate.update(sql, id);
     }
 }
