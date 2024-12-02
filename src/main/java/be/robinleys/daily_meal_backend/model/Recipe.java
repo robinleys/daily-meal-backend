@@ -8,6 +8,9 @@ public class Recipe {
     private int id;
     private String name;
 
+    public Recipe() {
+    }
+
     public Recipe(int id) {
         this.id = id;
     }
