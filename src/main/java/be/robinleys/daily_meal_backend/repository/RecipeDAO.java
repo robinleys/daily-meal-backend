@@ -28,6 +28,12 @@ public class RecipeDAO {
         return jdbcTemplate.query(sql, bprm);
     }
 
+    public Recipe findById(int id) {
+        var sql = "SELECT * FROM recipes WHERE id = ?";
+        var bprm = new BeanPropertyRowMapper<>(Recipe.class);
+        return jdbcTemplate.queryForObject(sql, bprm, id);
+    }
+
     public void update(Recipe recipe) {
         var sql = "UPDATE recipes SET name = ? WHERE id = ?";
         jdbcTemplate.update(sql, recipe.getName(), recipe.getId());
