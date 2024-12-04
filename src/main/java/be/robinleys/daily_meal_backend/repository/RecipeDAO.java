@@ -1,6 +1,7 @@
 package be.robinleys.daily_meal_backend.repository;
 
 
+import be.robinleys.daily_meal_backend.model.Ingredient;
 import be.robinleys.daily_meal_backend.model.Recipe;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -43,4 +44,24 @@ public class RecipeDAO {
         var sql = "DELETE FROM recipes WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
+
+    public List<Ingredient> getIngredientsForRecipe(int recipeId) {
+        var sql = "SELECT * " +
+                  "FROM ingredients JOIN recipe_ingredients " +
+                  "ON recipe_ingredients.ingredient_id = ingredients.id " +
+                  "WHERE recipe_ingredients.recipe_id = ?";
+        var bprm = new BeanPropertyRowMapper<>(Ingredient.class);
+        return jdbcTemplate.query(sql, bprm, recipeId);
+    }
+
+    public void addIngredientToRecipe(int recipeId, int ingredientId, long quantity) {
+        var sql = "INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, recipeId, ingredientId, quantity);
+        }
+
+    public void deleteIngredientFromRecipe(int recipeId, int ingredientId) {
+
+    }
+
+
 }
