@@ -1,13 +1,13 @@
 package be.robinleys.daily_meal_backend.model;
 
-import org.springframework.data.annotation.Id;
+import java.math.BigDecimal;
 
 public class Ingredient {
 
-    @Id
+
     private int id;
     private String name;
-    private long stock;
+    private BigDecimal stock;
     private String unit;
 
     public Ingredient() {
@@ -17,13 +17,13 @@ public class Ingredient {
         this.id = id;
     }
 
-    public Ingredient(String name, long stock, String unit) {
+    public Ingredient(String name, BigDecimal stock, String unit) {
         this.name = name;
         this.stock = stock;
         this.unit = unit;
     }
 
-    public Ingredient(int id, String name, long stock, String unit) {
+    public Ingredient(int id, String name, BigDecimal stock, String unit) {
         this.id = id;
         this.name = name;
         this.stock = stock;
@@ -42,11 +42,11 @@ public class Ingredient {
         this.name = name;
     }
 
-    public long getStock() {
+    public BigDecimal getStock() {
         return stock;
     }
 
-    public void setStock(long stock) {
+    public void setStock(BigDecimal stock) {
         this.stock = stock;
     }
 
