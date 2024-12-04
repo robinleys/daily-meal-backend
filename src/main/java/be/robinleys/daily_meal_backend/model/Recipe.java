@@ -1,10 +1,9 @@
 package be.robinleys.daily_meal_backend.model;
 
-import org.springframework.data.annotation.Id;
 
 public class Recipe {
 
-    @Id
+
     private int id;
     private String name;
 
