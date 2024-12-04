@@ -23,8 +23,12 @@ public class IngredientDAO {
 
     public List<Ingredient> findAll() {
         var sql = "SELECT * FROM ingredients";
-        var bprm = new BeanPropertyRowMapper<>(Ingredient.class);
-        return jdbcTemplate.query(sql, bprm);
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Ingredient(
+                rs.getInt("id"),
+                rs.getString("name"),
+                rs.getBigDecimal("stock"),
+                rs.getString("unit")
+        ));
     }
 
     public Ingredient findById(int id) {

@@ -50,8 +50,15 @@ public class RecipeDAO {
                   "FROM ingredients JOIN recipe_ingredients " +
                   "ON recipe_ingredients.ingredient_id = ingredients.id " +
                   "WHERE recipe_ingredients.recipe_id = ?";
-        var bprm = new BeanPropertyRowMapper<>(Ingredient.class);
-        return jdbcTemplate.query(sql, bprm, recipeId);
+//        var bprm = new BeanPropertyRowMapper<>(Ingredient.class);
+//        return jdbcTemplate.query(sql, bprm, recipeId);
+
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Ingredient(
+                rs.getInt("id"),
+                rs.getString("name"),
+                rs.getBigDecimal("stock"),
+                rs.getString("unit")
+        ), recipeId);
     }
 
     public void addIngredientToRecipe(int recipeId, int ingredientId, long quantity) {
