@@ -1,60 +1,34 @@
 package be.robinleys.daily_meal_backend.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class Ingredient {
+    public long id;
+    public String name;
+    public int stock;
+    public String unit;
 
-
-    private int id;
-    private String name;
-    private BigDecimal stock;
-    private String unit;
-
-    public Ingredient() {
-    }
-
-    public Ingredient(int id) {
+    public Ingredient(long id) {
         this.id = id;
     }
 
-    public Ingredient(String name, BigDecimal stock, String unit) {
-        this.name = name;
-        this.stock = stock;
-        this.unit = unit;
-    }
-
-    public Ingredient(int id, String name, BigDecimal stock, String unit) {
+    public Ingredient(long id, String name, int stock, String unit) {
         this.id = id;
         this.name = name;
         this.stock = stock;
         this.unit = unit;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Ingredient(String name, int stock, String unit) {
         this.name = name;
-    }
-
-    public BigDecimal getStock() {
-        return stock;
-    }
-
-    public void setStock(BigDecimal stock) {
         this.stock = stock;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
         this.unit = unit;
     }
 
