@@ -19,7 +19,7 @@ public class RecipeDAO {
     }
 
     public void create(Recipe recipe) {
-        var sql = "INSERT INTO recipes (name) VALUES (?, ?)";
+        var sql = "INSERT INTO recipes (name) VALUES (?)";
         jdbcTemplate.update(sql, recipe.getName());
     }
 
@@ -50,15 +50,8 @@ public class RecipeDAO {
                   "FROM ingredients JOIN recipe_ingredients " +
                   "ON recipe_ingredients.ingredient_id = ingredients.id " +
                   "WHERE recipe_ingredients.recipe_id = ?";
-//        var bprm = new BeanPropertyRowMapper<>(Ingredient.class);
-//        return jdbcTemplate.query(sql, bprm, recipeId);
-
-        return jdbcTemplate.query(sql, (rs, rowNum) -> new Ingredient(
-                rs.getInt("id"),
-                rs.getString("name"),
-                rs.getBigDecimal("stock"),
-                rs.getString("unit")
-        ), recipeId);
+        var bprm = new BeanPropertyRowMapper<>(Ingredient.class);
+        return jdbcTemplate.query(sql, bprm, recipeId);
     }
 
     public void addIngredientToRecipe(int recipeId, int ingredientId, long quantity) {
