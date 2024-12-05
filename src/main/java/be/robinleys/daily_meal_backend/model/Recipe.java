@@ -1,16 +1,18 @@
 package be.robinleys.daily_meal_backend.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class Recipe {
 
-
-    private int id;
+    private long id;
     private String name;
 
-    public Recipe() {
-    }
-
-    public Recipe(int id) {
+    public Recipe(long id) {
         this.id = id;
     }
 
@@ -18,24 +20,8 @@ public class Recipe {
         this.name = name;
     }
 
-    public Recipe(int id, String name) {
+    public Recipe(long id, String name) {
         this.id = id;
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
     }
 
