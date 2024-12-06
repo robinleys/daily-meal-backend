@@ -31,7 +31,7 @@ This project is the backend for a Recipes App, designed to provide users with fu
 - **GET /recipes/{recipeId}/ingredients**  
   Fetches all ingredients associated with the recipe having the specified `recipeId`.
 
-- **POST /recipes/{recipeId}/ingredients**  
+- **POST /recipes/{recipeId}/ingredients/{ingredientId}/{quantity}**  
   Associates an ingredient with the specified `recipeId`. The request should include `ingredientId` and `quantity`.
 
 - **DELETE /recipes/{recipeId}/ingredients/{ingredientId}** 
