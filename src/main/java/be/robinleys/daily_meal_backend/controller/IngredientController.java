@@ -10,7 +10,6 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("/ingredients")
 public class IngredientController {
-
     private final IngredientDAO ingredientDAO;
 
     public IngredientController(IngredientDAO ingredientDAO) {
@@ -18,7 +17,7 @@ public class IngredientController {
     }
 
     @GetMapping
-    public List<Ingredient> getIngredients() {
+    public List<Ingredient> findIngredients() {
         return ingredientDAO.findAll();
     }
 
