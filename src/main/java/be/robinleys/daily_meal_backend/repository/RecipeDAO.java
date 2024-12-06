@@ -11,7 +11,6 @@ import java.util.List;
 
 @Component
 public class RecipeDAO {
-
     private final JdbcTemplate jdbcTemplate;
 
     public RecipeDAO(JdbcTemplate jdbcTemplate) {
@@ -45,7 +44,7 @@ public class RecipeDAO {
         jdbcTemplate.update(sql, id);
     }
 
-    public List<Ingredient> getIngredientsForRecipe(int recipeId) {
+    public List<Ingredient> findIngredientsForRecipe(int recipeId) {
         var sql = "SELECT * " +
                   "FROM ingredients JOIN recipe_ingredients " +
                   "ON recipe_ingredients.ingredient_id = ingredients.id " +
@@ -57,11 +56,11 @@ public class RecipeDAO {
     public void addIngredientToRecipe(int recipeId, int ingredientId, long quantity) {
         var sql = "INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity) VALUES (?, ?, ?)";
         jdbcTemplate.update(sql, recipeId, ingredientId, quantity);
-        }
-
-    public void deleteIngredientFromRecipe(int recipeId, int ingredientId) {
-
     }
 
+    public void deleteIngredientFromRecipe(int recipeId, int ingredientId) {
+        var sql = "DELETE FROM recipe_ingredients WHERE recipe_id = ? AND ingredient_id = ?";
+        jdbcTemplate.update(sql, recipeId, ingredientId);
+    }
 
 }
