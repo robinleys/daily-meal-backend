@@ -11,7 +11,6 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("/recipes")
 public class RecipeController {
-
     private final RecipeDAO recipeDAO;
 
     public RecipeController(RecipeDAO recipeDAO) {
@@ -19,12 +18,12 @@ public class RecipeController {
     }
 
     @GetMapping
-    public List<Recipe> getRecipes() {
+    public List<Recipe> getAllRecipes() {
         return recipeDAO.findAll();
     }
 
     @GetMapping("/{id}")
-    public Recipe getRecipeById(@RequestParam int id) {
+    public Recipe getRecipeById(@PathVariable int id) {
         return recipeDAO.findById(id);
     }
 
@@ -42,4 +41,23 @@ public class RecipeController {
     public void deleteRecipe(@PathVariable int id) {
         recipeDAO.delete(id);
     }
+
+    @GetMapping("/{recipeId}/ingredients")
+    public void findIngredientsForRecipe(@PathVariable int id) {
+        recipeDAO.findIngredientsForRecipe(id);
+    }
+
+    @PostMapping("/{recipeId}/ingredients/{ingredientId}/{quantity}")
+    public void addIngredientToRecipe(@PathVariable int recipeId,
+                                      @PathVariable int ingredientId,
+                                      @PathVariable long quantity) {
+        recipeDAO.addIngredientToRecipe(recipeId, ingredientId, quantity);
+    }
+
+    @DeleteMapping("/{recipeId}/ingredients/{ingredientId}")
+    public void deleteIngredientFromRecipe(@PathVariable int recipeId,
+                                           @PathVariable int ingredientId) {
+        recipeDAO.deleteIngredientFromRecipe(recipeId, ingredientId);
+    }
+
 }
