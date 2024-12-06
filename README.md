@@ -34,7 +34,7 @@ This project is the backend for a Recipes App, designed to provide users with fu
 - **POST /recipes/{recipeId}/ingredients/{ingredientId}/{quantity}**  
   Associates an ingredient with the specified `recipeId`. The request should include `ingredientId` and `quantity`.
 
-- **DELETE /recipes/{recipeId}/ingredients/{ingredientId}** 
+- **DELETE /recipes/{recipeId}/ingredients/{ingredientId}**  
   Deletes the association between an ingredient and a recipe identified by `recipeId` and `ingredientId`.  
  
 
