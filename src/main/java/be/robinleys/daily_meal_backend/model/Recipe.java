@@ -3,10 +3,12 @@ package be.robinleys.daily_meal_backend.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Recipe {
 
     private long id;
@@ -23,13 +25,5 @@ public class Recipe {
     public Recipe(long id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
     }
 }
