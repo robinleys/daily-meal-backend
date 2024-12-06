@@ -3,12 +3,12 @@ package be.robinleys.daily_meal_backend.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.math.BigDecimal;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Ingredient {
     public long id;
     public String name;
@@ -30,15 +30,5 @@ public class Ingredient {
         this.name = name;
         this.stock = stock;
         this.unit = unit;
-    }
-
-    @Override
-    public String toString() {
-        return "Ingredient{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", stock=" + stock +
-                ", unit='" + unit + '\'' +
-                '}';
     }
 }
