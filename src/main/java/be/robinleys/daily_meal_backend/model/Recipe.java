@@ -10,7 +10,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Recipe {
-
     private long id;
     private String name;
 
