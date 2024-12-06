@@ -9,7 +9,6 @@ import java.util.List;
 
 @Component
 public class IngredientDAO {
-
     private final JdbcTemplate jdbcTemplate;
 
     public IngredientDAO(JdbcTemplate jdbcTemplate) {
